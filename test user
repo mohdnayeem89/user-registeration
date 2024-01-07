@@ -1,0 +1,32 @@
+class User:
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+
+class UserRegistrationSystem:
+    def __init__(self):
+        self.users = []
+
+    def register_user(self, username, password):
+        # Check if the username is already taken
+        if any(user.username == username for user in self.users):
+            print(f"Username '{username}' is already taken. Please choose another one.")
+        else:
+            new_user = User(username, password)
+            self.users.append(new_user)
+            print(f"User '{username}' successfully registered.")
+
+    def display_users(self):
+        print("Registered Users:")
+        for user in self.users:
+            print(f"Username: {user.username}")
+
+# Example usage
+registration_system = UserRegistrationSystem()
+
+# Register users
+registration_system.register_user("user1", "password123")
+registration_system.register_user("user2", "securepass")
+
+# Display registered users
+registration_system.display_users()
